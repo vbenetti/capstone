@@ -1,13 +1,39 @@
 <template name="bookList">
-	<div class="container top-margin">
-		<div class="row">
-  		{{#each books}}
-  		<div class="col-md-3 col-xs-6">
-  			<div class="light-border">
-  				<a href="/books/{{_id}}">{{title}}</a>
-  			</div>
-  		</div>
-  		{{/each}}
-  		</div>
-	</div>
+  <div class="container top-margin">
+    <div class="row">
+      
+      <div class="col-md-4 col-xs-6">
+        <h2> Shelves List </h2>
+        {{#each books}}
+          <div class="row">
+
+            <div>
+              <button type="button" class="btn btn-warning">     <a href="/books/{{_id}}">{{title}}</a></button>
+            
+           <br>
+          
+            </div>
+          </div>
+        {{/each}}
+    </div>  
+    <div class="col-md-1 col-xs-1">
+
+</div>
+      <div class="col-md-7 col-xs-6">
+      	<h2> Books List </h2>
+        {{#each books}}
+          <div class="row">
+
+        		<div >
+        			<div class="light-border">
+        				<a href="/books/{{_id}}">{{title}}</a>
+        			</div>
+        		</div>
+          </div>
+        {{/each}}
+    </div>	
+    </div>	
+	
+
+  </div>
 </template>
