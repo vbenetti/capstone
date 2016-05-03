@@ -1,0 +1,13 @@
+<template name="bookList">
+	<div class="container top-margin">
+		<div class="row">
+  		{{#each books}}
+  		<div class="col-md-3 col-xs-6">
+  			<div class="light-border">
+  				<a href="/books/{{_id}}">{{title}}</a>
+  			</div>
+  		</div>
+  		{{/each}}
+  		</div>
+	</div>
+</template>
