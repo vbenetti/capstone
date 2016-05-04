@@ -1,34 +1,55 @@
-<template name="navbar">  
-<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">BookShare</a>
+<template name="navbar">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">BookShare</a>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#" class="js-add-shelf">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Add Shelf
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="js-add-book">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Add Book
+          </a>
+        </li>
+
+
+
+        <!-- end drop down list -->
+      </ul>
+      <div class="nav navbar-right loginform">
         <ul class="nav navbar-nav">
-          <li>
-            <a href="#" class="js-add-book">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Add Book
-            </a> 
-          </li>
-
-
           <!-- drop down list -->
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shelves <span class="caret"></span></a>
 
-          <ul class="dropdown-menu">
-            {{#each books}}
-            <li><a href="/books/{{_id}}" class="">{{title}}</a></li>
-            {{/each}}
-          </ul>
-        </li>
-          <!-- end drop down list -->
+            <ul class="dropdown-menu">
+              {{#each shelves}}
+              <li><a href="/shelves/{{_id}}" class="">{{title}}</a></li>
+              {{/each}}
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              {{#each books}}
+              <li><a href="/books/{{_id}}" class="">{{title}}</a></li>
+              {{/each}}
+            </ul>
+          </li>
+
         </ul>
-        <div class="nav navbar-right">
         <div class="navbar-text">
-            {{> loginButtons align="right"}}
+          {{> loginButtons align="right"}}
 
-        </div>   
-        </div>       
-      </div> <!-- / nav container -->
-  </nav> 
+        </div>
+      </div>
+    </div> <!-- / nav container -->
+  </nav>
 </template>

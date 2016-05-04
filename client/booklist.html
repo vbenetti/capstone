@@ -1,26 +1,29 @@
 <template name="bookList">
   <div class="container top-margin">
     <div class="row">
-      
+       <h2>Shelves List</h2>
       <div class="col-md-4 col-xs-6">
-        <h2> Shelves List </h2>
-        {{#each books}}
+
+        {{#each shelves}}
           <div class="row">
 
-            <div>
-              <button type="button" class="btn btn-warning">     <a href="/books/{{_id}}">{{title}}</a></button>
-            
-           <br>
-          
+            <div class >
+              <button type="button" class="btn btn-success ">     <a href="/shelves/{{_id}}">{{title}}</a></button>
+
             </div>
+
+          </div>
+          <div class="row">
+            <br>
           </div>
         {{/each}}
-    </div>  
+    </div>
     <div class="col-md-1 col-xs-1">
 
 </div>
+ 	<h2> Books List </h2>
       <div class="col-md-7 col-xs-6">
-      	<h2> Books List </h2>
+
         {{#each books}}
           <div class="row">
 
@@ -31,9 +34,10 @@
         		</div>
           </div>
         {{/each}}
-    </div>	
-    </div>	
-	
+    </div>
+    </div>
+
 
   </div>
+
 </template>

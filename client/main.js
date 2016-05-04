@@ -4,6 +4,7 @@
 Meteor.subscribe("books");
 Meteor.subscribe("editingUsers");
 Meteor.subscribe("comments");
+Meteor.subscribe("shelves");
 
 
 Template.editor.helpers({
@@ -11,7 +12,10 @@ Template.editor.helpers({
   bookid:function(){
     setupCurrentBook();
     return Session.get("bookid");
-  }, 
+  },
+
+
+
   // set up the editor
   config:function(){
     return function(editor){
@@ -48,6 +52,10 @@ Template.navbar.helpers({
   // rerrieve a list of Books
   books:function(){
     return Books.find();
+},
+  shelves:  function(){
+    return Shelves.find();
+
   }
 })
 
@@ -56,6 +64,10 @@ Template.bookMeta.helpers({
   books:function(){
     return Books.findOne({_id:Session.get("bookid")});
   }, 
+
+    shelves:function(){
+    return Shelves.findOne({_id:Session.get("shelvid")});
+  },
   // test if a user is allowed to edit current book
   canEdit:function(){
     var book;
@@ -87,6 +99,9 @@ Template.bookList.helpers({
   // find all visible books
   books:function(){
     return Books.find();
+  },
+  shelves:function(){
+    return Shelves.find();
   }
 })
 
@@ -94,7 +109,11 @@ Template.insertCommentForm.helpers({
   // find current book id
   bookid:function(){
     return Session.get("bookid");
-  }, 
+  },
+  shelves:function(){
+    return Session.get("shelvid");
+  }
+
 })
 
 Template.commentList.helpers({
@@ -139,7 +158,44 @@ Template.navbar.events({
   "click .js-load-book":function(event){
     //console.log(this);
     Session.set("bookid", this._id);
+  },
+
+  "click .js-add-shelf":function(event){
+    event.preventDefault();
+    console.log("Add a new shelf!");
+
+    for (var i=0;i<10;i++){
+      Meteor.call('testMethod', function(){
+        console.log('testMethod returned');
+      });
+      console.log('after testMethod call');
+    }
+
+
+    if (!Meteor.user()){// user not available
+        alert("You need to login first!");
+    }
+    else {
+      // they are logged in... lets insert a book
+      var id = Meteor.call("addShelf", function(err, res){
+        if (!err){// all good
+          console.log("event callback received id: "+res);
+          Session.set("shelvid", res);            
+        }
+      });
+    }
+  }, 
+  // load book button
+  "click .js-load-shelf":function(event){
+    //console.log(this);
+    Session.set("shelvid", this._id);
   }
+
+
+
+
+
+
 })
 
 Template.bookMeta.events({

@@ -25,7 +25,21 @@ Meteor.methods({
       console.log("addBook method: got an id "+id);
       return id;
     }
-  }, 
+  },
+    addShelf:function(){
+    var shelf;
+    if (!this.userId){// not logged in
+      return;
+    }
+    else {
+      shelf = {owner:this.userId, createdOn:new Date(), 
+            title:"my new Shelf"};
+      var id = Shelves.insert(shelf);
+      console.log("addShelf method: got an id "+id);
+      return id;
+    }
+  },
+
   // changing doc privacy settings
   updatebookPrivacy:function(book){
     console.log("updatebookPrivacy method");
