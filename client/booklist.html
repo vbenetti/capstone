@@ -1,8 +1,33 @@
 <template name="bookList">
   <div class="container top-margin">
     <div class="row">
-    
-      <div class="col-md-4 col-xs-12">
+   <div  class="col-md-2 col-xs-12">   
+
+<div class="panel-group ">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Shelves List</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <ul class="list-group">
+         {{#each shelves}}
+        <a href="/shelves/{{_id}}"> 
+        <li class="list-group-item"> {{title}}</li>
+        </a>
+       
+        
+        {{/each}}
+      </ul>
+      
+  </div>
+</div>
+</div>
+</div>
+<!--    <button data-toggle="collapse" data-target="#scaffali">Show Shelves!</button>-->
+<!--      <div id="scaffali" class="col-md-4 col-xs-12 collapse">
+       
   <h2>Shelves List</h2>
         {{#each shelves}}
         <div class="row">
@@ -17,13 +42,16 @@
           <br>
         </div>
         {{/each}}
-      </div>
+      </div>-->
+     <!-- starts book list--> 
+      
+      
       <div class="col-md-1 col-xs-1">
 
       </div>
-      <h2> Books List </h2>
+      
       <div class="col-md-7 col-xs-12">
-
+<h2> Books List </h2>
         {{#each books}}
         <div class="row">
 
