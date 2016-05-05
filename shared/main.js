@@ -20,7 +20,7 @@ Meteor.methods({
     }
     else {
       book = {owner:this.userId, createdOn:new Date(), 
-            title:"my new book"};
+            title:"my new book",author:"default author"};
       var id = Books.insert(book);
       console.log("addBook method: got an id "+id);
       return id;
@@ -33,7 +33,7 @@ Meteor.methods({
     }
     else {
       shelf = {owner:this.userId, createdOn:new Date(), 
-            title:"my new Shelf"};
+            title:"my new Shelf",location:"my spot"};
       var id = Shelves.insert(shelf);
       console.log("addShelf method: got an id "+id);
       return id;

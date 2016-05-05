@@ -6,7 +6,7 @@
       </div>
     </div>
 
-   <!-- <div class="row">
+   <div class="row">
       <div class="col-md-12">
           {{> editingUsers}}
       </div>
@@ -19,7 +19,7 @@
       <div class="col-md-6">
         {{> viewer}}
       </div>
-    </div>--> 
+     </div>
     {{> commentList}}
 
     {{> insertCommentForm}}
@@ -43,8 +43,14 @@
 </template>
 
 <template name="bookMeta"> 
-  {{#with book}}
-  <span class="h1"> {{> editableText collection="books" field="title"}}</span>
+  
+  {{#with books}}
+  <div class="row">
+  <span class="h1"> Title: {{> editableText collection="books" field="title"}}</span>
+  </div>
+  <div class="row">
+  <span class="h3"> Author:{{> editableText collection="books" field="author"}}</span>
+  </div>
   {{#if canEdit}}
   <div class="checkbox">
       <label>
@@ -92,6 +98,3 @@
     <button type="submit" class="btn btn-primary">Insert</button>
   {{/autoForm}}
 </template>
-
-
-

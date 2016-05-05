@@ -2,7 +2,7 @@
 <div class="container top-margin">
     <div class="row">
       <div class="col-md-12">
-          {{> bookMeta}}
+          {{> shelfMeta}}
       </div>
     </div>
 
@@ -20,9 +20,9 @@
         {{> viewer}}
       </div>
     </div>--> 
-    {{> commentList}}
+   <!-- {{> commentList}}
 
-    {{> insertCommentForm}}
+    {{> insertCommentForm}}-->
 
 	</div><!-- end of docItem container -->
 
@@ -32,39 +32,44 @@
 
 
 
-<template name="editor">  
+<!--<template name="editor">  
       {{>sharejsCM bookid=bookid onRender=config id="editor" mode="javascript"}}
 </template>
+-->
 
-
-<template name="viewer">  
+<!--<template name="viewer">  
   <iframe id="viewer_iframe">
   </iframe>
-</template>
+</template>-->
 
-<template name="bookMeta"> 
-  {{#with book}}
-  <span class="h1"> {{> editableText collection="books" field="title"}}</span>
-  {{#if canEdit}}
+<template name="shelfMeta"> 
+  {{#with shelves}}
+  <div class="row">
+  <span class="h1"> Shelf Name:{{> editableText collection="shelves" field="title"}}</span>
+  </div>
+  <div class="row">
+  <span class="h2"> location:{{> editableText collection="shelves" field="location"}}</span>
+  </div>
+ <!-- {{#if canEdit}}
   <div class="checkbox">
       <label>
         <input type="checkbox" class="js-tog-private">Private
       </label>
   </div>
-  {{/if}}
+  {{/if}}-->
 
   {{/with}}
 </template>
 
-<template name="editingUsers"> 
+<!--<template name="editingUsers"> 
   Editors:
   {{#each users}}
   <span class="label label-success">{{firstname}} </span>
    
   {{/each}}
-</template>
+</template>-->
 
-<template name="commentList">
+<!--<template name="commentList">
   {{#each comments}}
   <ul>
     <li>{{title}}
@@ -73,9 +78,9 @@
   </ul>
   {{/each}}
 </template>
+-->
 
-
-<template name="insertCommentForm2">
+<!--<template name="insertCommentForm2">
   {{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
 </template>
 
@@ -92,3 +97,4 @@
     <button type="submit" class="btn btn-primary">Insert</button>
   {{/autoForm}}
 </template>
+-->

@@ -80,6 +80,24 @@ Template.bookMeta.helpers({
     return false;
   }
 })
+Template.shelfMeta.helpers({
+  // find current bookument
+    shelves:function(){
+    return Shelves.findOne({_id:Session.get("shelvid")});
+  }
+  //,
+  // test if a user is allowed to edit current book
+/*  canEdit:function(){
+    var book;
+    book = Books.findOne({_id:Session.get("bookid")});
+    if (book){
+      if (book.owner == Meteor.userId()){
+        return true;
+      }
+    }
+    return false;
+  }*/
+})
 
 Template.editableText.helpers({
     // test if a user is allowed to edit current book
@@ -176,7 +194,7 @@ Template.navbar.events({
         alert("You need to login first!");
     }
     else {
-      // they are logged in... lets insert a book
+      // they are logged in... lets insert a shelf
       var id = Meteor.call("addShelf", function(err, res){
         if (!err){// all good
           console.log("event callback received id: "+res);
@@ -185,7 +203,7 @@ Template.navbar.events({
       });
     }
   }, 
-  // load book button
+  // load shelf button
   "click .js-load-shelf":function(event){
     //console.log(this);
     Session.set("shelvid", this._id);
@@ -209,7 +227,7 @@ Template.bookMeta.events({
 })
 
 // helper to make sure a book is available
-function setupCurrentbookument(){
+function setupCurrentbook(){
   var book;
   if (!Session.get("bookid")){// no book id set yet
     book = Books.findOne();
