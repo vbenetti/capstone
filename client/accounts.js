@@ -13,6 +13,7 @@ Accounts.ui.config({
             errorFunction("Please write your first name");
             return false;
           } else {
+              
             return true;
           }
         }
