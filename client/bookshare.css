@@ -17,3 +17,10 @@
 
 .panel-heading {background-color: palegreen !important}
 .navbar {background-color: palegreen !important}
+ 
+ body {
+	 
+	 background: url('/background.jpg') center fixed ;
+	  background-size: contain;
+	background-repeat: no-repeat;
+ }

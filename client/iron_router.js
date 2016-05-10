@@ -7,6 +7,7 @@ Router.configure({
 Router.route('/', function () {
   console.log("you hit / ");
   this.render("navbar", {to:"header"});
+    Session.set("shelvid", "");
   this.render("bookList", {to:"main"});
 });
 
@@ -25,4 +26,10 @@ Router.route('/shelves/:_id', function () {
   this.render("ShelvItem", {to:"main"});  
 }
 
+Router.route('/booklist/:_id', function () {
+  console.log("you hit /booklist  "+this.params._id);
+  Session.set("shelvid", this.params._id);
+  this.render("navbar", {to:"header"});
+  this.render("bookList", {to:"main"});  
+}
 );
