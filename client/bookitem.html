@@ -5,21 +5,21 @@
           {{> bookMeta}}
       </div>
     </div>
-
+ <!--
    <div class="row">
       <div class="col-md-12">
           {{> editingUsers}}
       </div>
     </div>
 
-     <div class="row">
+    <div class="row">
       <div class="col-md-6">
           {{> editor}}
       </div>
       <div class="col-md-6">
         {{> viewer}}
       </div>
-     </div>
+     </div>-->
     {{> commentList}}
 
     {{> insertCommentForm}}
@@ -42,7 +42,7 @@
   </iframe>
 </template>
 
-<template name="bookMeta"> 
+<!--<template name="bookMeta"> 
   
   {{#with books}}
   <div class="row">
@@ -60,17 +60,40 @@
   {{/if}}
 
   {{/with}}
+</template>-->
+<template name="bookMeta">
+   <!--{{#autoForm id=makeUniqueID type="update" collection=Collections.Items doc=this autosave=true}}
+   {{#autoForm id="afUpdateDemo" type=formType collection=Collections.People doc=selectedPersonDoc autosave=autoSaveMode}}-->
+   {{bookid}}
+   {{#with bookid}}
+    {{#autoForm collection="Books" id="bookMeta" type="method" meteormethod="updatebook"}}
+    <fieldset>
+     <legend>Book Details</legend>
+      {{> afQuickField name='title'}}
+      {{> afQuickField name='author'}}
+      {{> afQuickField name='summary' rows=6 value="Write your summary here"}}
+      {{> afQuickField name='shelvid' value="shelvid" type="hidden"}}
+      {{> afQuickField name='owner' value=123 type="hidden"}}
+       {{> afQuickField name='_id' value="XoKccsFEYLfiGNkJg"}}
+
+    </fieldset>
+ <button type="submit" class="btn btn-primary">Update</button>
+  {{/autoForm}}
+   {{/with}}
+ 
 </template>
 
-<template name="editingUsers"> 
+
+<!--<template name="editingUsers"> 
   Editors:
   {{#each users}}
   <span class="label label-success">{{firstname}} </span>
    
   {{/each}}
-</template>
+</template>-->
 
 <template name="commentList">
+  
   {{#each comments}}
   <ul>
     <li>{{title}}
@@ -81,16 +104,20 @@
 </template>
 
 
-<template name="insertCommentForm2">
+<!--<template name="insertCommentForm2">
   {{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
-</template>
+</template>-->
 
 <template name="insertCommentForm">
+    <br>
+    <br>
+           
+
     {{#autoForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
     <fieldset>
-      <legend>Comment</legend>
+      <legend>Add your reviews</legend>
       {{> afQuickField name='title'}}
-      {{> afQuickField name='body' rows=6 value="Write your comment here"}}
+      {{> afQuickField name='body' rows=6 value="Write your review here"}}
       {{> afQuickField name='bookid' value=bookid type="hidden"}}
       {{> afQuickField name='owner' value=123 type="hidden"}}
 

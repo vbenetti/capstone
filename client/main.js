@@ -6,7 +6,7 @@ Meteor.subscribe("editingUsers");
 Meteor.subscribe("comments");
 Meteor.subscribe("shelves");
 
-
+/*
 Template.editor.helpers({
   // get current book id
   bookid:function(){
@@ -28,9 +28,9 @@ Template.editor.helpers({
     }
   }, 
 });
+*/
 
-
-Template.editingUsers.helpers({
+/*Template.editingUsers.helpers({
   // retrieve a list of users
   users:function(){
     var book, eusers, users;
@@ -46,7 +46,7 @@ Template.editingUsers.helpers({
     }
     return users;
   }
-})
+})*/
 
 Template.navbar.helpers({
   // rerrieve a list of Books
@@ -61,8 +61,12 @@ Template.navbar.helpers({
 
 Template.bookMeta.helpers({
   // find current bookument
+  bookid :function(){
+    return Session.get("bookid");
+  },
   books:function(){
     return Books.findOne({_id:Session.get("bookid")});
+  
   }, 
 
     shelves:function(){
@@ -224,6 +228,8 @@ Template.bookMeta.events({
     Meteor.call("updatebookPrivacy", book);
 
   }
+  
+  
 })
 
 // helper to make sure a book is available
