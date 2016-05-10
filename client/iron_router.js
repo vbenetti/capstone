@@ -24,7 +24,7 @@ Router.route('/shelves/:_id', function () {
   Session.set("shelvid", this.params._id);
   this.render("navbar", {to:"header"});
   this.render("ShelvItem", {to:"main"});  
-}
+});
 
 Router.route('/booklist/:_id', function () {
   console.log("you hit /booklist  "+this.params._id);
