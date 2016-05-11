@@ -15,6 +15,7 @@ Router.route('/', function () {
 Router.route('/books/:_id', function () {
   console.log("you hit /books  "+this.params._id);
   Session.set("bookid", this.params._id);
+ 
   this.render("navbar", {to:"header"});
   this.render("bookItem", {to:"main"});  
 });

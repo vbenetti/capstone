@@ -1,30 +1,30 @@
 <template name="bookItem">
-<div class="container top-margin">
+  <div class="container top-margin">
     <div class="row">
       <div class="col-md-12">
-          {{> bookMeta}}
+        {{> bookMeta}}
       </div>
     </div>
- <!--
-   <div class="row">
-      <div class="col-md-12">
-          {{> editingUsers}}
-      </div>
-    </div>
-
+    <!--
     <div class="row">
-      <div class="col-md-6">
-          {{> editor}}
-      </div>
-      <div class="col-md-6">
-        {{> viewer}}
-      </div>
-     </div>-->
-    {{> commentList}}
+    <div class="col-md-12">
+    {{> editingUsers}}
+  </div>
+</div>
 
-    {{> insertCommentForm}}
+<div class="row">
+<div class="col-md-6">
+{{> editor}}
+</div>
+<div class="col-md-6">
+{{> viewer}}
+</div>
+</div>-->
+{{> commentList}}
 
-	</div><!-- end of docItem container -->
+{{> insertCommentForm}}
+
+</div><!-- end of docItem container -->
 
 </template>
 
@@ -32,68 +32,79 @@
 
 
 
-<template name="editor">  
-      {{>sharejsCM bookid=bookid onRender=config id="editor" mode="javascript"}}
+<template name="editor">
+  {{>sharejsCM bookid=bookid onRender=config id="editor" mode="javascript"}}
 </template>
 
 
-<template name="viewer">  
+<template name="viewer">
   <iframe id="viewer_iframe">
   </iframe>
 </template>
 
-<!--<template name="bookMeta"> 
-  
+<template name="bookMeta">
+
   {{#with books}}
   <div class="row">
-  <span class="h1"> Title: {{> editableText collection="books" field="title"}}</span>
-  </div>
-  <div class="row">
-  <span class="h3"> Author:{{> editableText collection="books" field="author"}}</span>
-  </div>
-  {{#if canEdit}}
-  <div class="checkbox">
-      <label>
-        <input type="checkbox" class="js-tog-private">Private
-      </label>
-  </div>
-  {{/if}}
+    <div class="panel-group">
+      <h1> Book Details</h1>
+      <div class="panel panel-default">
 
-  {{/with}}
-</template>-->
-<template name="bookMeta">
-   <!--{{#autoForm id=makeUniqueID type="update" collection=Collections.Items doc=this autosave=true}}
-   {{#autoForm id="afUpdateDemo" type=formType collection=Collections.People doc=selectedPersonDoc autosave=autoSaveMode}}-->
-   {{bookid}}
-   {{#with bookid}}
-    {{#autoForm collection="Books" id="bookMeta" type="method" meteormethod="updatebook"}}
-    <fieldset>
-     <legend>Book Details</legend>
-      {{> afQuickField name='title'}}
-      {{> afQuickField name='author'}}
-      {{> afQuickField name='summary' rows=6 value="Write your summary here"}}
-      {{> afQuickField name='shelvid' value="shelvid" type="hidden"}}
-      {{> afQuickField name='owner' value=123 type="hidden"}}
-       {{> afQuickField name='_id' value="XoKccsFEYLfiGNkJg"}}
+        <div class="panel-heading h3">Title</div>
 
-    </fieldset>
- <button type="submit" class="btn btn-primary">Update</button>
-  {{/autoForm}}
-   {{/with}}
- 
+        <div class="panel-body"> {{> editableText collection="books" field="title"}}</div>
+        <div class="panel-heading h3">Author</div>
+        <div class="panel-body">{{> editableText collection="books" field="author"}}</div>
+        <div class="panel-heading h3">Summary</div>
+        <div class="panel-body" >{{> editableText collection="books" field="summary" textarea=true  }}</div>
+        <div class="panel-heading h3">Shelf </div>
+        <div class="panel-body" >
+          <select class="miacombo form-control">
+            <option></option>
+            {{#each shelves}}
+            <option value={{_id}}>{{title}} - {{_id}}</option>
+            {{/each}}
+          </select>
+
+         
+        </div>
+      </div>
+    </div>
+  </div>
+{{/with}}
 </template>
+<!--<template name="bookMeta">
+
+{{bookid}}
+{{#with bookid}}
+{{#autoForm collection="Books" id="bookMeta" type="method" meteormethod="updatebook"}}
+<fieldset>
+<legend>Book Details</legend>
+{{> afQuickField name='title'}}
+{{> afQuickField name='author'}}
+{{> afQuickField name='summary' rows=6 value="Write your summary here"}}
+{{> afQuickField name='shelvid' value="shelvid" type="hidden"}}
+{{> afQuickField name='owner' value=123 type="hidden"}}
+{{> afQuickField name='_id' value="XoKccsFEYLfiGNkJg"}}
+
+</fieldset>
+<button type="submit" class="btn btn-primary">Update</button>
+{{/autoForm}}
+{{/with}}
+
+</template>-->
 
 
-<!--<template name="editingUsers"> 
-  Editors:
-  {{#each users}}
-  <span class="label label-success">{{firstname}} </span>
-   
-  {{/each}}
+<!--<template name="editingUsers">
+Editors:
+{{#each users}}
+<span class="label label-success">{{firstname}} </span>
+
+{{/each}}
 </template>-->
 
 <template name="commentList">
-  
+
   {{#each comments}}
   <ul>
     <li>{{title}}
@@ -105,23 +116,23 @@
 
 
 <!--<template name="insertCommentForm2">
-  {{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
+{{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
 </template>-->
 
 <template name="insertCommentForm">
-    <br>
-    <br>
-           
+  <br>
+  <br>
 
-    {{#autoForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
-    <fieldset>
-      <legend>Add your reviews</legend>
-      {{> afQuickField name='title'}}
-      {{> afQuickField name='body' rows=6 value="Write your review here"}}
-      {{> afQuickField name='bookid' value=bookid type="hidden"}}
-      {{> afQuickField name='owner' value=123 type="hidden"}}
 
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Insert</button>
+  {{#autoForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
+  <fieldset>
+    <legend>Add your reviews</legend>
+    {{> afQuickField name='title'}}
+    {{> afQuickField name='body' rows=6 value="Write your review here"}}
+    {{> afQuickField name='bookid' value=bookid type="hidden"}}
+    {{> afQuickField name='owner' value=123 type="hidden"}}
+
+  </fieldset>
+  <button type="submit" class="btn btn-primary">Insert</button>
   {{/autoForm}}
 </template>

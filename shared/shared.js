@@ -20,29 +20,30 @@ Meteor.methods({
     }
     else {
       book = {owner:this.userId, createdOn:new Date(), 
-            title:"my new book",author:"default author",  shelvid:" " , summary:" "};
+            title:"my new book",author:"default author", summary:"write here your summary"};
       var id = Books.insert(book);
       console.log("addBook method: got an id "+id);
       return id;
     }
   },
-   updatebook:function(book){
+  /* updatebook:function(book){
     console.log("dettagli libro")
-    console.log(book) ; 
-   
-       var realBook = Books.findOne({_id:book._id, owner:this.userId});
+      
+       var realBook = Books.findOne({_id:"XoKccsFEYLfiGNkJg", owner:this.userId});
+         console.log("dettagli libro 2")
+    console.log(realBook) ;   
     if (realBook){
       realBook.shelvid = book.shelvid;
       realBook.title = book.title;
       realBook.author=book.author;
       console.log("qua");
       realBook.summary=book.summary;
-      Books.update({_id:book._id}, realBook);
+      Books.update({_id:"XoKccsFEYLfiGNkJg"}, realBook);
     }
     
     
     console.log("updatebook");
-  },
+  },*/
   
     addShelf:function(){
     var shelf;
@@ -65,6 +66,15 @@ Meteor.methods({
     var realBook = Books.findOne({_id:book._id, owner:this.userId});
     if (realBook){
       realBook.isPrivate = book.isPrivate;
+      Books.update({_id:book._id}, realBook);
+    }
+  },
+   updatebookshelf:function(book){
+    console.log("updatebookshelf method");
+    console.log(book);
+    var realBook = Books.findOne({_id:book._id});
+    if (realBook){
+      realBook.shelvid = book.shelvid;
       Books.update({_id:book._id}, realBook);
     }
   },

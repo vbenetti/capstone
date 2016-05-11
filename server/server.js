@@ -3,7 +3,7 @@
 Meteor.startup(function () {
 // create a starter doc if necessary
 if (!Books.findOne()){// no Books yet!
-  Books.insert({title:"my new book",author:"default author",summary:"",shelvid:""});
+  Books.insert({title:"my new book",author:"default author",summary:"write here your summary"});
 }
 
 
