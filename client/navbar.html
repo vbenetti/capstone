@@ -1,7 +1,13 @@
 <template name="navbar">
   <nav class="navbar navbar-default ">
     <div class="container">
-      <a class="navbar-brand" href="/">BookShare</a>
+      <a class="navbar-brand" href="/">
+      
+
+     <img style="width:90px;height:30px;" src="brand.png" alt="logo">
+           
+      </a>
+      
       <ul class="nav navbar-nav">
         <li>
           <a href="#" class="js-add-shelf">
@@ -22,10 +28,12 @@
         <!-- end drop down list -->
       </ul>
       <div class="nav navbar-right loginform">
+          {{#if currentUser }}
         <ul class="nav navbar-nav">
+        
           <!-- drop down list -->
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shelves <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shelves Details <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
               {{#each shelves}}
@@ -35,7 +43,7 @@
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books Details <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
               {{#each books}}
@@ -45,6 +53,7 @@
           </li>
 
         </ul>
+        {{/if}}
         <div class="navbar-text">
           {{> loginButtons align="right"}}
 
