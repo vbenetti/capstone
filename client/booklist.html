@@ -1,7 +1,8 @@
 <template name="bookList">
   <div class="container top-margin">
+   {{#if currentUser }}
     <div class="row">
-      <div  class="col-md-2 col-xs-12">
+        <div  class="col-md-2 col-xs-12">
 
         <div class="panel-group ">
           <div class="panel panel-default">
@@ -64,8 +65,14 @@
   {{/each}}
 </div>
 </div>
-
-
+{{else}}
+<p>
+To Use BookShare you must be Logged in! <br>
+With the button Add Book you can add a book!<br>
+With the button Add Shelf you can add a Shelf!<br>
+With the buttons Books and Shelves details you can edit books and shelves and associate them.<br>
+</p>
+{{/if}}
 </div>
 
 </template>

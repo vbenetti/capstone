@@ -58,11 +58,16 @@
         <div class="panel-heading h3">Summary</div>
         <div class="panel-body" >{{> editableText collection="books" field="summary" textarea=true  }}</div>
         <div class="panel-heading h3">Shelf </div>
+        
         <div class="panel-body" >
+        <b>Shelf associated: </b> {{bookshelfn}} 
+        <br>
+           <br>
+              <br>
           <select class="miacombo form-control">
             <option></option>
             {{#each shelves}}
-            <option value={{_id}}>{{title}} - {{_id}}</option>
+            <option value={{_id}}>{{title}}</option>
             {{/each}}
           </select>
 

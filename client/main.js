@@ -86,7 +86,13 @@ Template.bookMeta.helpers({
 
   },
   
+bookshelfn:function(){
+  var c = Books.findOne({_id:Session.get("bookid")});
+    
+    var b = Shelves.findOne({_id:c.shelvid});
+    return b.title;
 
+  },
   /*    shelves:function(){
   return Shelves.findOne({_id:Session.get("shelvid")});
 },*/
@@ -148,6 +154,8 @@ Template.bookList.helpers({
   shelves:function(){
     return Shelves.find();
   }
+  
+  
 })
 
 Template.insertCommentForm.helpers({
