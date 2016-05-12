@@ -78,35 +78,6 @@
   </div>
 {{/with}}
 </template>
-<!--<template name="bookMeta">
-
-{{bookid}}
-{{#with bookid}}
-{{#autoForm collection="Books" id="bookMeta" type="method" meteormethod="updatebook"}}
-<fieldset>
-<legend>Book Details</legend>
-{{> afQuickField name='title'}}
-{{> afQuickField name='author'}}
-{{> afQuickField name='summary' rows=6 value="Write your summary here"}}
-{{> afQuickField name='shelvid' value="shelvid" type="hidden"}}
-{{> afQuickField name='owner' value=123 type="hidden"}}
-{{> afQuickField name='_id' value="XoKccsFEYLfiGNkJg"}}
-
-</fieldset>
-<button type="submit" class="btn btn-primary">Update</button>
-{{/autoForm}}
-{{/with}}
-
-</template>-->
-
-
-<!--<template name="editingUsers">
-Editors:
-{{#each users}}
-<span class="label label-success">{{firstname}} </span>
-
-{{/each}}
-</template>-->
 
 <template name="commentList">
 
@@ -118,11 +89,6 @@ Editors:
   </ul>
   {{/each}}
 </template>
-
-
-<!--<template name="insertCommentForm2">
-{{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
-</template>-->
 
 <template name="insertCommentForm">
   <br>

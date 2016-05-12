@@ -51,17 +51,17 @@ return users;
 Template.navbar.helpers({
   // rerrieve a list of Books
   books:function(){
-    return Books.find();
+    return Books.find({owner:Meteor.userId()});
   },
   shelves:  function(){
-    return Shelves.find();
+    return Shelves.find({owner:Meteor.userId()});
 
   }
 })
 
 
 Template.bookMeta.onRendered( function () {
- var b = Books.findOne({_id:Session.get("bookid")});
+ var b = Books.findOne({_id:Session.get("bookid"),owner:Meteor.userId()});
   console.log("quì " + b.shelvid );
  $('.miacombo option[value='+b.shelvid + ']').attr('selected','selected');
 
@@ -76,20 +76,20 @@ Template.bookMeta.helpers({
   },
   books:function(){
      
-     return Books.findOne({_id:Session.get("bookid")});
+     return Books.findOne({_id:Session.get("bookid"),owner:Meteor.userId()});
 
   },
   
   bookshelfid:function(){
-    var b = Books.findOne({_id:Session.get("bookid")});
+    var b = Books.findOne({_id:Session.get("bookid"),owner:Meteor.userId()});
     return b.shelvid;
 
   },
   
 bookshelfn:function(){
-  var c = Books.findOne({_id:Session.get("bookid")});
+  var c = Books.findOne({_id:Session.get("bookid"),owner:Meteor.userId()});
     
-    var b = Shelves.findOne({_id:c.shelvid});
+    var b = Shelves.findOne({_id:c.shelvid,owner:Meteor.userId()});
     return b.title;
 
   },
@@ -98,7 +98,7 @@ bookshelfn:function(){
 },*/
 
 shelves:function(){
-  return Shelves.find();
+  return Shelves.find({owner:Meteor.userId()});
 },
 // test if a user is allowed to edit current book
 usercanEdit:function(){
@@ -115,7 +115,7 @@ usercanEdit:function(){
 Template.shelfMeta.helpers({
   // find current bookument
   shelves:function(){
-    return Shelves.findOne({_id:Session.get("shelvid")});
+    return Shelves.findOne({_id:Session.get("shelvid"),owner:Meteor.userId()});
   }
   //
   ,
@@ -132,7 +132,7 @@ Template.shelfMeta.helpers({
   }
 })
 
-Template.editableText.helpers({
+/*Template.editableText.helpers({
   // test if a user is allowed to edit current book
   userCanEdit : function(shelves,Collection) {
     // can edit if the current book is owned by me.
@@ -144,15 +144,25 @@ Template.editableText.helpers({
       return false;
     }
   }
-})
+})*/
 
 Template.bookList.helpers({
   // find all visible books
   books:function(){
-    return Books.find();
+    var b
+    s = Session.get("shelvid");
+    if(s) {
+      
+      b = Books.find({shelvid:Session.get("shelvid"),owner:Meteor.userId()});
+    }
+    else
+    {
+     b =  Books.find({owner:Meteor.userId()});
+    }
+    return b
   },
   shelves:function(){
-    return Shelves.find();
+    return Shelves.find({owner:Meteor.userId()});
   }
   
   

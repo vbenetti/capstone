@@ -1,7 +1,7 @@
 // code that is only sent to the server. 
 
 Meteor.startup(function () {
-// create a starter doc if necessary
+/*// create a starter doc if necessary
 if (!Books.findOne()){// no Books yet!
   Books.insert({title:"my new book",author:"default author",summary:"write here your summary"});
 }
@@ -10,7 +10,7 @@ if (!Books.findOne()){// no Books yet!
 if (!Shelves.findOne()){// no Books yet!
   Shelves.insert({title:"my new Shelf"});
 }
-
+*/
 
 });
 

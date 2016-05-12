@@ -51,13 +51,13 @@ Accounts.ui.config({
             value: 'us'
           }, {
             id: 2,
-            label: 'Spain',
-            value: 'es',
+            label: 'Italy',
+            value: 'it',
         }],
         visible: true
     }, {
         fieldName: 'terms',
-        fieldLabel: 'I accept the terms and conditions <a href="">See t and x...</a>',
+        fieldLabel: 'I accept the terms and conditions',
         inputType: 'checkbox',
         visible: true,
         saveToProfile: false,
