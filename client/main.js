@@ -243,16 +243,16 @@ Template.navbar.events({
       var id = Meteor.call("addShelf", function(err, res){
         if (!err){// all good
           console.log("event callback received id: "+res);
-          Session.set("shelvid", res);
+          /*Session.set("shelvid", res);*/
         }
       });
     }
   },
   // load shelf button
-  "click .js-load-shelf":function(event){
+  /*"click .js-load-shelf":function(event){
     //console.log(this);
     Session.set("shelvid", this._id);
-  }
+  }*/
 
 
 
